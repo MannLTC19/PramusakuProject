@@ -5,12 +5,62 @@
     android:layout_height="match_parent"
     tools:context=".AboutUsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="About Us"
-        android:textSize="50dp"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
 
+        <ImageView
+            android:id="@+id/aboutUsImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/scout_logo"
+            android:contentDescription="@string/about_us_image"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/aboutUsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/aboutUsDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:text="This app was created with passion to make scouting easy and affordable for everyone, especially children. We believe scouting plays a vital role in shaping character and life skills, so we designed this app to be interactive, practical, and enjoyable.  Through this app, you can explore various scouting materials, from basic skills to the core values every scout should uphold. We aim to make learning engaging and motivating, ensuring users enjoy the process.  Our goal is to help you understand and master scouting in a simple yet effective way. Thank you for choosing this app to embark on your scouting adventure!"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/contactUsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Us"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/contactUsEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Email: PramusakuDev.gmail.com"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
 </FrameLayout>
