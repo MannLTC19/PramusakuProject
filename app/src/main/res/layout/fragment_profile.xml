@@ -44,4 +44,11 @@
         android:backgroundTint="#E89D34"
         android:text="Update Profile" />
 
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E89D34"
+        android:text="Logout" />
+
 </LinearLayout>
