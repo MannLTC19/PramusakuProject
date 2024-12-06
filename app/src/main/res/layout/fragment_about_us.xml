@@ -17,7 +17,6 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/scout_logo"
-            android:contentDescription="@string/about_us_image"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
             android:scaleType="centerCrop"/>
