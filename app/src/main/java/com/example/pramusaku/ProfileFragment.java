@@ -1,9 +1,12 @@
 package com.example.pramusaku;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -21,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 
 
 public class ProfileFragment extends Fragment {
@@ -32,6 +36,7 @@ public class ProfileFragment extends Fragment {
 
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
+
 
 
     @Override
@@ -52,8 +57,12 @@ public class ProfileFragment extends Fragment {
             updateBtnClick();
         }));
         logoutBtn.setOnClickListener(v -> logoutUser());
+
+        auth = FirebaseAuth.getInstance();
+
         return view;
     }
+
 
     void fetchUserdata(){
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -64,7 +73,7 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
-                        String username = snapshot.child("userbame").getValue(String.class);
+                        String username = snapshot.child("username").getValue(String.class);
                         String email = snapshot.child("email").getValue(String.class);
 
                         txtUsername.setText(username!=null ? username: "");
@@ -76,7 +85,7 @@ public class ProfileFragment extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getContext(), "Failde to fetch data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Fail to fetch data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }else {
