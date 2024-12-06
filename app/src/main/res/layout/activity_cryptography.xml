@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Cryptography coder-decoder"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+    <!-- Button 1: Semaphore -->
+    <Button
+        android:id="@+id/semaphoreButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/titleText"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/semaphore_icon"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="Semaphore"
+        android:textSize="18sp"
+        android:textColor="#000000" />
+
+    <!-- Button 2: Morse -->
+    <Button
+        android:id="@+id/morseButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/semaphoreButton"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/morse_icon"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="Morse"
+        android:textSize="18sp"
+        android:textColor="#000000" />
+
+    <!-- Button 3: Code -->
+    <Button
+        android:id="@+id/codeButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/morseButton"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/code_icon"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="Code"
+        android:textSize="18sp"
+        android:textColor="#000000" />
+
+    <!-- Button 4: Footprint -->
+    <Button
+        android:id="@+id/footprintButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/codeButton"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/footprint_icon"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
+        android:text="Footprint"
+        android:textSize="18sp"
+        android:textColor="#000000" />
+
+    <!-- Home Icon -->
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/home_icon"
+        android:background="@null" />
+
+    <!-- Back Icon -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/back_icon"
+        android:background="@null" />
+</RelativeLayout>
