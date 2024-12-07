@@ -33,7 +33,7 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="Ilustrasi Pramusaku"
         android:scaleType="centerInside"
-        android:src="@drawable/Pramusaku" />
+        android:src="@drawable/pramusaku" />
 
     <!-- Judul Aplikasi -->
     <TextView
