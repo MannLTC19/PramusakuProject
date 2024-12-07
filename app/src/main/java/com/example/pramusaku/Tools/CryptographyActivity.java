@@ -16,17 +16,20 @@ public class CryptographyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_cryptography);
 
         // Set up button click listeners
         Button semaphoreButton = findViewById(R.id.semaphoreButton);
         semaphoreButton.setOnClickListener(v -> {
-            // Add functionality here
+
         });
 
         Button morseButton = findViewById(R.id.morseButton);
-        morseButton.setOnClickListener(v -> {
-            // Add functionality here
+        morseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentmorse = new Intent(CryptographyActivity.this,)
+            }
         });
 
         Button codeButton = findViewById(R.id.codeButton);
