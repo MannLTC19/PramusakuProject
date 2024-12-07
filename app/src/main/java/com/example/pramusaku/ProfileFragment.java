@@ -1,13 +1,18 @@
 package com.example.pramusaku;
 
+import static java.util.Base64.*;
+
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -29,9 +34,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
 import java.security.Permission;
+import android.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +56,7 @@ public class ProfileFragment extends Fragment {
     private DatabaseReference databaseReference;
     private static final int CAMERA_REQUEST_CODE = 100;
     private static final int CAMERA_PERMISSION_CODE = 101;
-
+    private FirebaseFirestore firestore;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,20 +76,77 @@ public class ProfileFragment extends Fragment {
             updateBtnClick();
         }));
         logoutBtn.setOnClickListener(v -> logoutUser());
-        profilePicture.setOnClickListener(v -> imagePicker());
+        profilePicture.setOnClickListener(v -> cameraPermission());
         auth = FirebaseAuth.getInstance();
 
         return view;
     }
 
-    void imagePicker(){
-        ImagePicker.with(ProfileFragment.this)
-                .crop()	    			//Crop image(Optional), Check Customization for more option
-                .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-                .start();
+    private void cameraPermission(){
+        if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
+        }else {
+            openCamera();
+        }
     }
 
+    private void openCamera(){
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(cameraIntent.resolveActivity(requireActivity().getPackageManager())!=null){
+            startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
+        }else {
+            Toast.makeText(getContext(), "Camera is not available", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CAMERA_REQUEST_CODE && resultCode == requireActivity().RESULT_OK){
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+            profilePicture.setImageBitmap(imageBitmap);
+            uploadImageToFirebase(imageBitmap);
+        }
+    }
+
+    private void uploadImageToFirebase(Bitmap imageBitmap){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int quality = 100;
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, quality, baos);
+
+        while (baos.toByteArray().length > 1024*1024){
+            baos.reset();
+            quality -= 10;
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, quality, baos);
+        }
+
+        byte[] compressImageData = baos.toByteArray();
+        String base64Image = Base64.encodeToString(compressImageData,Base64.DEFAULT);
+        // Store in Firestore
+        String userId = auth.getCurrentUser().getUid();
+        Map<String, Object> profileData = new HashMap<>();
+        profileData.put("profilePicture", base64Image);
+
+        firestore.collection("users").document(userId)
+                .set(profileData)
+                .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Image uploaded successfully!", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Toast.makeText(getContext(), "Failed to upload image: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == CAMERA_PERMISSION_CODE){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                openCamera();
+            }else {
+                Toast.makeText(getContext(), "Camera permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
     void fetchUserdata(){
         FirebaseUser currentUser = auth.getCurrentUser();
