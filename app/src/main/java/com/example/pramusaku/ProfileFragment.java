@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -20,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -65,10 +67,20 @@ public class ProfileFragment extends Fragment {
             updateBtnClick();
         }));
         logoutBtn.setOnClickListener(v -> logoutUser());
+        profilePicture.setOnClickListener(v -> imagePicker());
         auth = FirebaseAuth.getInstance();
 
         return view;
     }
+
+    void imagePicker(){
+        ImagePicker.with(ProfileFragment.this)
+                .crop()	    			//Crop image(Optional), Check Customization for more option
+                .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                .start();
+    }
+
 
     void fetchUserdata(){
         FirebaseUser currentUser = auth.getCurrentUser();
