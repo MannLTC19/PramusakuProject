@@ -2,13 +2,16 @@ package com.example.pramusaku;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class ProfileFragment extends Fragment {
     ImageView profilePicture;
@@ -36,7 +42,8 @@ public class ProfileFragment extends Fragment {
 
     private FirebaseAuth auth;
     private DatabaseReference databaseReference;
-
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int CAMERA_PERMISSION_CODE = 101;
 
 
     @Override
@@ -57,12 +64,10 @@ public class ProfileFragment extends Fragment {
             updateBtnClick();
         }));
         logoutBtn.setOnClickListener(v -> logoutUser());
-
         auth = FirebaseAuth.getInstance();
 
         return view;
     }
-
 
     void fetchUserdata(){
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -143,6 +148,8 @@ public class ProfileFragment extends Fragment {
         startActivity(intent);
         requireActivity().finish();
     }
+
+
 }
 
 
