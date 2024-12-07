@@ -70,7 +70,6 @@ public class ProfileFragment extends Fragment {
         logoutBtn = view.findViewById(R.id.logoutBtn);
 
         auth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         fetchUserdata();
         updateBtn.setOnClickListener((v ->{
             updateBtnClick();
@@ -78,6 +77,8 @@ public class ProfileFragment extends Fragment {
         logoutBtn.setOnClickListener(v -> logoutUser());
         profilePicture.setOnClickListener(v -> cameraPermission());
         auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+
 
         return view;
     }
@@ -153,25 +154,20 @@ public class ProfileFragment extends Fragment {
         if(currentUser != null){
             String userId = currentUser.getUid();
 
-            databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
-                        String username = snapshot.child("username").getValue(String.class);
-                        String email = snapshot.child("email").getValue(String.class);
+            firestore.collection("users").document(userId).get().addOnSuccessListener(documentSnapshot -> {
+                if(documentSnapshot.exists()){
+                    String username = documentSnapshot.getString("username");
+                    String email = documentSnapshot.getString("email");
 
-                        txtUsername.setText(username!=null ? username: "");
-                        txtEmail.setText(email != null ? email: "");
-                    }else {
-                        Toast.makeText(getContext(), "User fata not found", Toast.LENGTH_SHORT).show();
-                    }
+                    txtUsername.setText(username != null ? username: "");
+                    txtEmail.setText(email != null ? username:"");
+                }else {
+                    Toast.makeText(getContext(), "User data not found", Toast.LENGTH_SHORT).show();
                 }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getContext(), "Fail to fetch data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(getContext(), "Failed to fetch data" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
         }else {
             Toast.makeText(getContext(), "No authenticated user", Toast.LENGTH_SHORT).show();
         }
@@ -193,28 +189,30 @@ public class ProfileFragment extends Fragment {
     }
 
     void updateUserData(String newUsername, String newEmail){
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if(currentUser !=null){
-            String userId = currentUser.getUid();
+       FirebaseUser currentUser = auth.getCurrentUser();
+       if(currentUser != null){
+           String userId = currentUser.getUid();
 
-            currentUser.updateEmail(newEmail).addOnCompleteListener(task -> {
+           currentUser.updateEmail(newEmail).addOnCompleteListener(task -> {
                if(task.isSuccessful()){
-                   databaseReference.child(userId).child("username").setValue(newUsername);
-                   databaseReference.child(userId).child("email").setValue(newEmail)
-                           .addOnCompleteListener(dbTask -> {
+                   Map<String, Object> updates = new HashMap<>();
+                   updates.put("username", newUsername);
+                   updates.put("email", newEmail);
+
+                   firestore.collection("users").document(userId).update(updates)
+                           .addOnCompleteListener(dbTask ->{
                                if (dbTask.isSuccessful()){
-                                   Toast.makeText(getContext(), "Profile update succesfully", Toast.LENGTH_SHORT).show();
+                                   Toast.makeText(getContext(), "Profile updated succesfullt", Toast.LENGTH_SHORT).show();
                                }else {
-                                   Toast.makeText(getContext(), "Failed to update profile in database: " + dbTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                   Toast.makeText(getContext(), "Failed to update in Firestore: "+dbTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                }
                            });
-               }else {
-                   Toast.makeText(getContext(), "Failed to update email: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                }
-            });
-        }else {
-            Toast.makeText(getContext(), "No authenticated user", Toast.LENGTH_SHORT).show();
-        }
+           });
+       }else {
+           Toast.makeText(getContext(), "No authenticated user", Toast.LENGTH_SHORT).show();
+       }
+
     }
 
     void logoutUser(){
