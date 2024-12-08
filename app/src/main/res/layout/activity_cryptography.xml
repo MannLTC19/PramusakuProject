@@ -26,7 +26,7 @@
         android:layout_below="@id/titleText"
         android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E89D34"
         android:drawableLeft="@drawable/semaphore_icon"
         android:drawablePadding="10dp"
         android:padding="10dp"
@@ -42,7 +42,7 @@
         android:layout_below="@id/semaphoreButton"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E89D34"
         android:drawableLeft="@drawable/morse_icon"
         android:drawablePadding="10dp"
         android:padding="10dp"
@@ -58,7 +58,7 @@
         android:layout_below="@id/morseButton"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E89D34"
         android:drawableLeft="@drawable/code_icon"
         android:drawablePadding="10dp"
         android:padding="10dp"
@@ -74,7 +74,7 @@
         android:layout_below="@id/codeButton"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_button"
+        android:backgroundTint="#E89D34"
         android:drawableLeft="@drawable/footprint_icon"
         android:drawablePadding="10dp"
         android:padding="10dp"
@@ -83,24 +83,6 @@
         android:textColor="#000000" />
 
     <!-- Home Icon -->
-    <ImageButton
-        android:id="@+id/homeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="16dp"
-        android:src="@drawable/home_icon"
-        android:background="@null" />
 
     <!-- Back Icon -->
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
-        android:src="@drawable/back_icon"
-        android:background="@null" />
 </RelativeLayout>

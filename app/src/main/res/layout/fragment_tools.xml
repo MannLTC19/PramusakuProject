@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_tools"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp" />
 
     <!-- Kotak 1: National Scout Code of Order -->
     <LinearLayout

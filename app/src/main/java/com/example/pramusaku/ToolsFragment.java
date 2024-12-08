@@ -1,64 +1,41 @@
 package com.example.pramusaku;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ToolsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ToolsFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ToolsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ToolsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ToolsFragment newInstance(String param1, String param2) {
-        ToolsFragment fragment = new ToolsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tools, container, false);
+        View view = inflater.inflate(R.layout.fragment_tools, container, false);
+
+        // Initialize UI components
+        View box1 = view.findViewById(R.id.box_1);
+        View box2 = view.findViewById(R.id.box_2);
+        View box3 = view.findViewById(R.id.box_3);
+        View box4 = view.findViewById(R.id.box_4);
+
+        // Set click listeners for each box
+        setBoxClickListener(box1, "National Scout Code of Order");
+        setBoxClickListener(box2, "National Data");
+        setBoxClickListener(box3, "Cryptography code-decoder");
+        setBoxClickListener(box4, "Scouting Crafts");
+
+        return view;
+    }
+
+    private void setBoxClickListener(View box, String message) {
+        box.setOnClickListener(v -> {
+            // Example action: Show a Toast with the category name
+            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        });
     }
 }
