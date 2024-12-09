@@ -1,22 +1,12 @@
-package com.example.pramusaku.Tools.Crytography;
+package com.example.pramusaku;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.pramusaku.AboutUsFragment;
-import com.example.pramusaku.CertificatesFragment;
-import com.example.pramusaku.HomeFragment;
-import com.example.pramusaku.ProfileFragment;
-import com.example.pramusaku.R;
-import com.example.pramusaku.ToolsFragment;
 import com.example.pramusaku.databinding.ActivityMainBinding;
 
 public class MainCodeActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.pramusaku;
+package com.example.pramusaku.Tools.ScoutingAct;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.pramusaku.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CertificateFragment#newInstance} factory method to
+ * Use the {@link KnotsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CertificateFragment extends Fragment {
+public class KnotsFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class CertificateFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CertificateFragment() {
+    public KnotsFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class CertificateFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CertificateFragment.
+     * @return A new instance of fragment KnotsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CertificateFragment newInstance(String param1, String param2) {
-        CertificateFragment fragment = new CertificateFragment();
+    public static KnotsFragment newInstance(String param1, String param2) {
+        KnotsFragment fragment = new KnotsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class CertificateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_certificate, container, false);
+        return inflater.inflate(R.layout.fragment_knots, container, false);
     }
 }

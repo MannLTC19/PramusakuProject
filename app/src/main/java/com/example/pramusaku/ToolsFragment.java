@@ -6,12 +6,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pramusaku.Tools.CryptographyActivity;
-import com.example.pramusaku.Tools.Crytography.MainCodeActivity;
 import com.example.pramusaku.Tools.NationalDataActivity;
 import com.example.pramusaku.Tools.ScoutCodeActivity;
 import com.example.pramusaku.Tools.ScoutingActivity;
