@@ -1,10 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tools.Crytography.FootprintActivity">
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="78dp"
+                android:layout_height="76dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/ic_footprint" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Footprint"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_box"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="327dp"
+                    android:layout_height="289dp"
+                    android:contentDescription="Tanda jejak dengan batu"
+                    android:src="@drawable/batu" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="In addition to soil, you can also use stones to make trail marks. This method is quite popular among adventurers because when arranged correctly, the marks from the stones will not be easily lost. The easiest way, you can stack stones in an unusual shape so that they are easy to recognize. After that, place them in an unusual place. For example, you can stack stones in the shape of > to show the way in the direction the stone at the end is pointing. Or stack 10 stones up to form an equilateral triangle to indicate danger."
+                    android:textSize="14sp"
+                    android:paddingTop="8dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="297dp"
+                    android:layout_height="334dp"
+                    android:contentDescription="Tanda jejak di atas tanah"
+                    android:src="@drawable/tanah" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="To make a footprint on the ground, you can scratch or draw on a flat area of ​​land. But remember, try to make the scratch quite deep so that it doesn't disappear easily. Also, make sure the ground is wide enough or easy to see."
+                    android:textSize="14sp"
+                    android:paddingTop="8dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="331dp"
+                    android:layout_height="200dp"
+                    android:contentDescription="Tanda jejak menggunakan rumput"
+                    android:src="@drawable/rumput" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="If you are exploring the grassland, it is likely that you will have difficulty tapping trees or rocks. In conditions like this, use the grass around you as a trail marker. You don't have to memorize everything right away, prioritize the signs that you will use often. After that, make sure you have communicated the signs to other group members so that there is no miscommunication. If necessary, make a sign that is easily recognized by other group members according to mutual agreement."
+                    android:textSize="14sp"
+                    android:paddingTop="8dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="337dp"
+                    android:layout_height="200dp"
+                    android:contentDescription="Tanda jejak menggunakan ranting"
+                    android:src="@drawable/ranting" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The next media you can use is tree branches. In the wild there are many branches scattered everywhere. Or you can also break branches and arrange them into certain shapes. For example, break a branch and point the tip to the right to show the way to the right. Or stick a broken branch in the ground to tell the other members to go ahead."
+                    android:textSize="14sp"
+                    android:paddingTop="8dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

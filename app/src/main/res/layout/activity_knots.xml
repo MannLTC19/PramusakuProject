@@ -1,10 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tools.ScoutingAct.KnotsActivity">
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="78dp"
+                android:layout_height="76dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/ic_knots" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Knots"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginStart="8dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_box"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simpul jangkar"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="327dp"
+                    android:layout_height="289dp"
+                    android:contentDescription="Simpul jangkar"
+                    android:src="@drawable/simpul1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ikatan Canggah"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="327dp"
+                    android:layout_height="289dp"
+                    android:contentDescription="Ikatan Canggah"
+                    android:src="@drawable/simpul2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simpul laso"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="327dp"
+                    android:layout_height="289dp"
+                    android:contentDescription="Simpul laso"
+                    android:src="@drawable/simpul3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simpul pangkal"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="327dp"
+                    android:layout_height="289dp"
+                    android:contentDescription="Simpul pangkal"
+                    android:src="@drawable/simpul4" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simpul kembar"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="327dp"
+                    android:layout_height="289dp"
+                    android:contentDescription="Simpul kembar"
+                    android:src="@drawable/simpul5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simpul mati"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="327dp"
+                    android:layout_height="289dp"
+                    android:contentDescription="Simpul mati"
+                    android:src="@drawable/simpul6" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simpul hidup"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:layout_width="327dp"
+                    android:layout_height="289dp"
+                    android:contentDescription="Simpul hidup"
+                    android:src="@drawable/simpul7" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
