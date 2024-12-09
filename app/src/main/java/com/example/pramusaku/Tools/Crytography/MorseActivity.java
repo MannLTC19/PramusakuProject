@@ -1,25 +1,19 @@
 package com.example.pramusaku.Tools.Crytography;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.pramusaku.R;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pramusaku.R;
 
 import java.util.HashMap;
 
-public class MorseFragment extends Fragment {
+public class MorseActivity extends AppCompatActivity {
 
     private EditText etNormalText;
     private Button btnTranslate;
@@ -67,21 +61,15 @@ public class MorseFragment extends Fragment {
         morseCodeMap.put(' ', "/"); // Space between words
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout
-        return inflater.inflate(R.layout.fragment_morse, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_morse);
 
         // Initialize UI components
-        etNormalText = view.findViewById(R.id.etNormalText);
-        btnTranslate = view.findViewById(R.id.btnTranslate);
-        tvMorseCode = view.findViewById(R.id.tvMorseCode);
+        etNormalText = findViewById(R.id.etNormalText);
+        btnTranslate = findViewById(R.id.btnTranslate);
+        tvMorseCode = findViewById(R.id.tvMorseCode);
 
         // Set button click listener
         btnTranslate.setOnClickListener(v -> {
