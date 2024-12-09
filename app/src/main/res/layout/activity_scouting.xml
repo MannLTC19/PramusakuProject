@@ -52,7 +52,7 @@
         <TextView
             android:layout_width="194dp"
             android:layout_height="31dp"
-            android:text="Rigging"
+            android:text="Knots"
             android:textColor="@color/black"
             android:textSize="20sp" />
     </LinearLayout>
