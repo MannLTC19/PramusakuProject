@@ -6,47 +6,41 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pramusaku.R;
 
-public class CompassFragment extends Fragment implements SensorEventListener {
+public class CompassActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private Sensor magnetometer;
 
-    private float[] gravity;
-    private float[] geomagnetic;
+    private float[] gravity; // Accelerometer data
+    private float[] geomagnetic; // Magnetometer data
     private ImageView compassImageView;
-    private float azimuth = 0f;
+    private float azimuth = 0f; // Angle of rotation
     private float currentAzimuth = 0f;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_compass, container, false);
-        compassImageView = view.findViewById(R.id.compassImageView);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_compass);
+
+        compassImageView = findViewById(R.id.compassImageView);
 
         // Initialize sensors
-        sensorManager = (SensorManager) requireActivity().getSystemService(Context.SENSOR_SERVICE);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
         }
-
-        return view;
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
         if (accelerometer != null) {
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
@@ -57,7 +51,7 @@ public class CompassFragment extends Fragment implements SensorEventListener {
     }
 
     @Override
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(this);
     }

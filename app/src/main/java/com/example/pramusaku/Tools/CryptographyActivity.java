@@ -3,17 +3,16 @@ package com.example.pramusaku.Tools;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.pramusaku.R;
-import com.example.pramusaku.Tools.Crytography.CodeFragment;
-import com.example.pramusaku.Tools.Crytography.FootprintFragment;
-import com.example.pramusaku.Tools.Crytography.MorseFragment;
-import com.example.pramusaku.Tools.Crytography.SemaphoreFragment;
+import com.example.pramusaku.Tools.Crytography.CodeActivity;
+import com.example.pramusaku.Tools.Crytography.FootprintActivity;
+import com.example.pramusaku.Tools.Crytography.MorseActivity;
+import com.example.pramusaku.Tools.Crytography.SemaphoreActivity;
 
 public class CryptographyActivity extends AppCompatActivity {
 
@@ -27,7 +26,8 @@ public class CryptographyActivity extends AppCompatActivity {
         semaphoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentsema = new Intent(CryptographyActivity.this, SemaphoreFragment.class);
+                Intent intentcode = new Intent(CryptographyActivity.this, SemaphoreActivity.class);
+                startActivity(intentcode);
             }
 
         });
@@ -36,7 +36,8 @@ public class CryptographyActivity extends AppCompatActivity {
         morseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentmorse = new Intent(CryptographyActivity.this, MorseFragment.class);
+                Intent intentcode = new Intent(CryptographyActivity.this, MorseActivity.class);
+                startActivity(intentcode);
             }
         });
 
@@ -44,7 +45,8 @@ public class CryptographyActivity extends AppCompatActivity {
         codeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentcode = new Intent(CryptographyActivity.this, CodeFragment.class);
+                Intent intentcode = new Intent(CryptographyActivity.this, CodeActivity.class);
+                startActivity(intentcode);
             }
         });
 
@@ -52,7 +54,8 @@ public class CryptographyActivity extends AppCompatActivity {
         footprintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentcode = new Intent(CryptographyActivity.this, FootprintFragment.class);
+                Intent intentcode = new Intent(CryptographyActivity.this, FootprintActivity.class);
+                startActivity(intentcode);
             }
         });
     }
