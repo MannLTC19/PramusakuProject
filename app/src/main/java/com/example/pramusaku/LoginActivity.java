@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void navigateToHomeScreen() {
         // Navigate to the home screen or next activity
-        Intent intent = new Intent(LoginActivity.this, HomeFragment.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish(); // Prevent user from returning to the login screen
     }
