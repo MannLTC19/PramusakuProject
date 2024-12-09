@@ -48,6 +48,8 @@ dependencies {
     implementation(libs.firebase.storage)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+    implementation("com.google.firebase:firebase-firestore")
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation(libs.firebase.database)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
