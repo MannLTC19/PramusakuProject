@@ -21,7 +21,8 @@
                 android:layout_width="78dp"
                 android:layout_height="76dp"
                 android:contentDescription="Logo"
-                android:src="@drawable/ic_line_of_march" />
+                android:src="@drawable/ic_line_of_march"
+                android:id="@+id/logoImageView"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -30,7 +31,8 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginStart="8dp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:id="@+id/titleTextView"/>
         </LinearLayout>
 
         <LinearLayout
@@ -51,7 +53,8 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/berderet"
-                    android:contentDescription="Berderet" />
+                    android:contentDescription="Berderet"
+                    android:id="@+id/berderetImageView"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -63,7 +66,8 @@ Aplikasi barisannya :
 Anggota berbaris lurus secara berderet menghadap ke instruktur barisan"
                     android:textSize="14sp"
                     android:paddingStart="8dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:id="@+id/berderetTextView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -76,7 +80,8 @@ Anggota berbaris lurus secara berderet menghadap ke instruktur barisan"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/ic_angkare"
-                    android:contentDescription="Angkare" />
+                    android:contentDescription="Angkare"
+                    android:id="@+id/angkareImageView"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -85,7 +90,8 @@ Anggota berbaris lurus secara berderet menghadap ke instruktur barisan"
                     android:text="ANGKARE Kedua lengan tangan dikepalkan dan diacungkan ke atas.Aplikasi barisannya :Anggota berbaris membentuk huruf U (bentuk U siku 90 derajat) dengan Instruktur/ketua tepat berada di tengah barisan. Barisan yang berada di samping kanan dan kiri instruktur barisan, saling berhadapan satu dengan yang lainnya. Dan barisan yang berada di depan instruktur barisan, saling berhadapan dengan instruktur barisan."
                     android:textSize="14sp"
                     android:paddingStart="8dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:id="@+id/angkareTextView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -98,7 +104,8 @@ Anggota berbaris lurus secara berderet menghadap ke instruktur barisan"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/image_1"
-                    android:contentDescription="Lingkaran Besar" />
+                    android:contentDescription="Lingkaran Besar"
+                    android:id="@+id/lingkaranBesarImageView"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -110,7 +117,8 @@ Aplikasi Barisannya:
 Anggota membentuk lingkaran besar (ada jarak antar anggota satu dengan yang lain). Semua anggota menghadap ke pusat titik tengah lingkaran. Instruktur Barisan berada tepat di tengah lingkaran"
                     android:textSize="14sp"
                     android:paddingStart="8dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:id="@+id/lingkaranBesarTextView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -123,7 +131,8 @@ Anggota membentuk lingkaran besar (ada jarak antar anggota satu dengan yang lain
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/image_2"
-                    android:contentDescription="Lingkaran Kecil" />
+                    android:contentDescription="Lingkaran Kecil"
+                    android:id="@+id/lingkaranKecilImageView"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -135,7 +144,8 @@ Aplikasi Barisannya:
 Anggota membentuk lingkaran kecil (bahu anggota satu dengan yang lain menempel). Semua anggota menghadap ke pusat titik tengah lingkaran. Instruktur Barisan berada tepat di tengah lingkaran."
                     android:textSize="14sp"
                     android:paddingStart="8dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:id="@+id/lingkaranKecilTextView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -148,7 +158,8 @@ Anggota membentuk lingkaran kecil (bahu anggota satu dengan yang lain menempel).
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/image_3"
-                    android:contentDescription="Kolone Terbuka" />
+                    android:contentDescription="Kolone Terbuka"
+                    android:id="@+id/koloneTerbukaImageView"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -159,7 +170,8 @@ Kedua belah tangan diangkat setinggi bahu, jari2 merapat menghadap ke dalam Apli
 Membentuk barisan yang saling bertolak belakang antara satu regu dengan regu lainnya."
                     android:textSize="14sp"
                     android:paddingStart="8dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:id="@+id/koloneTerbukaTextView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -172,7 +184,8 @@ Membentuk barisan yang saling bertolak belakang antara satu regu dengan regu lai
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/image_4"
-                    android:contentDescription="Kolone Tertutup" />
+                    android:contentDescription="Kolone Tertutup"
+                    android:id="@+id/koloneTertutupImageView"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -184,7 +197,8 @@ Aplikasinya:
 Regu membentuk barisan yang saling berhadapan antara regu satu dengan regu lainnya."
                     android:textSize="14sp"
                     android:paddingStart="8dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:id="@+id/koloneTertutupTextView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -197,7 +211,8 @@ Regu membentuk barisan yang saling berhadapan antara regu satu dengan regu lainn
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/image_5"
-                    android:contentDescription="Roda" />
+                    android:contentDescription="Roda"
+                    android:id="@+id/rodaImageView"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -207,7 +222,8 @@ Regu membentuk barisan yang saling berhadapan antara regu satu dengan regu lainn
 4 Regu menghadap satu titik dari empat arah"
                     android:textSize="14sp"
                     android:paddingStart="8dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:id="@+id/rodaTextView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -220,7 +236,8 @@ Regu membentuk barisan yang saling berhadapan antara regu satu dengan regu lainn
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/image_6"
-                    android:contentDescription="Anak Panah" />
+                    android:contentDescription="Anak Panah"
+                    android:id="@+id/anakPanahImageView"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -232,7 +249,8 @@ Aplikasinya:
 Anggota membentuk beberapa barisan lurus yang terpusat pada satu titik"
                     android:textSize="14sp"
                     android:paddingStart="8dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:id="@+id/anakPanahTextView"/>
             </LinearLayout>
 
         </LinearLayout>

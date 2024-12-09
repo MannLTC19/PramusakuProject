@@ -1,5 +1,7 @@
 package com.example.pramusaku.Tools.Crytography;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,6 +20,10 @@ public class MorseActivity extends AppCompatActivity {
     private EditText etNormalText;
     private Button btnTranslate;
     private TextView tvMorseCode;
+
+    private SharedPreferences sharedPreferences;
+    private static final String PREFS_NAME = "MorsePrefs";
+    private static final String LAST_TRANSLATION_KEY = "lastTranslation";
 
     private static final HashMap<Character, String> morseCodeMap = new HashMap<>();
 
@@ -71,6 +77,15 @@ public class MorseActivity extends AppCompatActivity {
         btnTranslate = findViewById(R.id.btnTranslate);
         tvMorseCode = findViewById(R.id.tvMorseCode);
 
+        // Access shared preferences
+        sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+
+        // Restore last translated Morse code from SharedPreferences
+        String lastTranslation = sharedPreferences.getString(LAST_TRANSLATION_KEY, "");
+        if (!lastTranslation.isEmpty()) {
+            tvMorseCode.setText(lastTranslation);
+        }
+
         // Set button click listener
         btnTranslate.setOnClickListener(v -> {
             String normalText = etNormalText.getText().toString().toUpperCase();
@@ -82,6 +97,9 @@ public class MorseActivity extends AppCompatActivity {
             // Translate to Morse code
             String morseCode = translateToMorse(normalText);
             tvMorseCode.setText(morseCode);
+
+            // Save the translation to SharedPreferences
+            saveTranslationToSharedPreferences(morseCode);
         });
     }
 
@@ -97,4 +115,11 @@ public class MorseActivity extends AppCompatActivity {
         }
         return morseBuilder.toString().trim();
     }
+
+    private void saveTranslationToSharedPreferences(String translation) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(LAST_TRANSLATION_KEY, translation);
+        editor.apply();
+    }
 }
+

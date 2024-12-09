@@ -21,7 +21,8 @@
                 android:layout_width="78dp"
                 android:layout_height="76dp"
                 android:contentDescription="Logo"
-                android:src="@drawable/ic_knots" />
+                android:src="@drawable/ic_knots"
+                android:id="@+id/logoImageView" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +62,8 @@
                     android:layout_width="327dp"
                     android:layout_height="289dp"
                     android:contentDescription="Simpul jangkar"
-                    android:src="@drawable/simpul1" />
+                    android:src="@drawable/simpul1"
+                    android:id="@+id/imageViewSimpulJangkar" />
 
             </LinearLayout>
 
@@ -85,7 +87,8 @@
                     android:layout_width="327dp"
                     android:layout_height="289dp"
                     android:contentDescription="Ikatan Canggah"
-                    android:src="@drawable/simpul2" />
+                    android:src="@drawable/simpul2"
+                    android:id="@+id/imageViewIkatanCanggah" />
 
             </LinearLayout>
 
@@ -109,7 +112,8 @@
                     android:layout_width="327dp"
                     android:layout_height="289dp"
                     android:contentDescription="Simpul laso"
-                    android:src="@drawable/simpul3" />
+                    android:src="@drawable/simpul3"
+                    android:id="@+id/imageViewSimpulLaso" />
 
             </LinearLayout>
 
@@ -133,7 +137,8 @@
                     android:layout_width="327dp"
                     android:layout_height="289dp"
                     android:contentDescription="Simpul pangkal"
-                    android:src="@drawable/simpul4" />
+                    android:src="@drawable/simpul4"
+                    android:id="@+id/imageViewSimpulPangkal" />
 
             </LinearLayout>
 
@@ -157,7 +162,8 @@
                     android:layout_width="327dp"
                     android:layout_height="289dp"
                     android:contentDescription="Simpul kembar"
-                    android:src="@drawable/simpul5" />
+                    android:src="@drawable/simpul5"
+                    android:id="@+id/imageViewSimpulKembar" />
 
             </LinearLayout>
 
@@ -181,7 +187,8 @@
                     android:layout_width="327dp"
                     android:layout_height="289dp"
                     android:contentDescription="Simpul mati"
-                    android:src="@drawable/simpul6" />
+                    android:src="@drawable/simpul6"
+                    android:id="@+id/imageViewSimpulMati" />
 
             </LinearLayout>
 
@@ -205,11 +212,10 @@
                     android:layout_width="327dp"
                     android:layout_height="289dp"
                     android:contentDescription="Simpul hidup"
-                    android:src="@drawable/simpul7" />
+                    android:src="@drawable/simpul7"
+                    android:id="@+id/imageViewSimpulHidup" />
 
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>
