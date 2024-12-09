@@ -75,7 +75,7 @@ Anggota berbaris lurus secara berderet menghadap ke instruktur barisan"
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/Ic_Angkare"
+                    android:src="@drawable/ic_angkare"
                     android:contentDescription="Angkare" />
 
                 <TextView
