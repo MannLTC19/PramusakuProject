@@ -23,10 +23,10 @@ public class CompassFragment extends Fragment implements SensorEventListener {
     private Sensor accelerometer;
     private Sensor magnetometer;
 
-    private float[] gravity; // Accelerometer data
-    private float[] geomagnetic; // Magnetometer data
+    private float[] gravity;
+    private float[] geomagnetic; /
     private ImageView compassImageView;
-    private float azimuth = 0f; // Angle of rotation
+    private float azimuth = 0f;
     private float currentAzimuth = 0f;
 
     @Nullable
