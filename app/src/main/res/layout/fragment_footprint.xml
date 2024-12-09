@@ -75,7 +75,7 @@
                 <ImageView
                     android:layout_width="304dp"
                     android:layout_height="331dp"
-                    android:contentDescription="Tanda jejak dengan batu"
+                    android:contentDescription="Tanda jejak menggunakan batu"
                     android:src="@drawable/batu" />
 
                 <TextView
