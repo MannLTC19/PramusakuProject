@@ -1,15 +1,19 @@
 package com.example.pramusaku.Tools.ScoutingAct;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.ImageButton;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pramusaku.MainActivity;
 import com.example.pramusaku.R;
 
 public class CompassActivity extends AppCompatActivity implements SensorEventListener {
@@ -30,6 +34,25 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         setContentView(R.layout.activity_compass);
 
         compassImageView = findViewById(R.id.compassImageView);
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        ImageButton btnMain = findViewById(R.id.btnMain);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        btnMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CompassActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish(); // Optional: Ends the current activity
+            }
+        });
 
         // Initialize sensors
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
