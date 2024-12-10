@@ -1,41 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <!-- Buttons for Back and Home -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true">
 
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="320dp"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:contentDescription="Back"
+            android:padding="16dp"
+            android:src="@drawable/back_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="DuplicateClickableBoundsCheck" />
+
+        <ImageButton
+            android:id="@+id/btnMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="323dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:contentDescription="Home"
+            android:padding="16dp"
+            android:src="@drawable/home_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- EditText for Input -->
     <EditText
         android:id="@+id/etNormalText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_below="@id/buttonLayout"
+        android:layout_marginTop="16dp"
         android:hint="Enter text to translate"
         android:minHeight="48dp"
         android:padding="12dp"
         android:textSize="16sp" />
 
-
+    <!-- Translate Button -->
     <Button
         android:id="@+id/btnTranslate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Translate to Morse"
-        android:backgroundTint="#E89D34"
         android:layout_below="@id/etNormalText"
         android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#E89D34"
+        android:text="Translate to Morse" />
 
-
+    <!-- TextView for Morse Code Output -->
     <TextView
         android:id="@+id/tvMorseCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Morse code will appear here"
         android:layout_below="@id/btnTranslate"
         android:layout_marginTop="16dp"
-        android:textSize="18sp"
-        android:padding="8dp"
         android:background="#E0E0E0"
-        android:textColor="#000" />
+        android:padding="8dp"
+        android:text="Morse code will appear here"
+        android:textColor="#000"
+        android:textSize="18sp" />
 </RelativeLayout>
+
