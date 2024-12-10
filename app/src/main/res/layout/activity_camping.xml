@@ -1,10 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tools.ScoutingAct.CampingActivity">
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:layout_width="78dp"
+                android:layout_height="76dp"
+                android:contentDescription="Logo"
+                android:src="@drawable/ic_camping"
+                android:id="@+id/logoImageView" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Camping"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set Up Your Camp!"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_box"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Small Tent"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:id="@+id/imageViewsmalltent"
+                    android:layout_width="327dp"
+                    android:layout_height="156dp"
+                    android:contentDescription="Small Tent"
+                    android:src="@drawable/tenda_kecil1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageViewsmalltent2"
+                    android:layout_width="327dp"
+                    android:layout_height="167dp"
+                    android:contentDescription="Small Tent"
+                    android:src="@drawable/tenda_kecil2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large Tent"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:id="@+id/imageViewlargetent"
+                    android:layout_width="327dp"
+                    android:layout_height="209dp"
+                    android:contentDescription="Large Tent"
+                    android:src="@drawable/tenda_besar1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageViewlargetent2"
+                    android:layout_width="327dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Large Tent"
+                    android:src="@drawable/tenda_besar2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageViewlargetent3"
+                    android:layout_width="327dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Large Tent"
+                    android:src="@drawable/tenda_besar3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageViewlargetent4"
+                    android:layout_width="327dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="Large Tent"
+                    android:src="@drawable/tenda_besar4" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
