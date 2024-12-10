@@ -1,259 +1,310 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:padding="16dp">
 
-    <LinearLayout
+    <!-- Top Navigation Buttons -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="323dp"
+            android:layout_marginBottom="5dp"
+            android:background="@null"
+            android:contentDescription="Back"
+            android:padding="16dp"
+            android:src="@drawable/back_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="323dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@null"
+            android:contentDescription="Home"
+            android:padding="16dp"
+            android:src="@drawable/home_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Scrollable Content -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="16dp"
+        android:background="#FFFFFF">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingBottom="16dp">
-
-            <ImageView
-                android:layout_width="78dp"
-                android:layout_height="76dp"
-                android:contentDescription="Logo"
-                android:src="@drawable/ic_line_of_march"
-                android:id="@+id/logoImageView"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Line of March"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginStart="8dp"
-                android:textColor="#000000"
-                android:id="@+id/titleTextView"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_box"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:paddingBottom="16dp">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/berderet"
-                    android:contentDescription="Berderet"
-                    android:id="@+id/berderetImageView"/>
+                    android:id="@+id/logoImageView"
+                    android:layout_width="78dp"
+                    android:layout_height="76dp"
+                    android:contentDescription="Logo"
+                    android:src="@drawable/ic_line_of_march" />
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="BERDERET
+                    android:layout_marginStart="8dp"
+                    android:text="Line of March"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/rounded_box"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/berderet"
+                        android:contentDescription="Berderet"
+                        android:id="@+id/berderetImageView"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="BERDERET
 Kedua lengan tangan dibentangkan kesamping, setinggi bahu, telapak tangan terbuka dan menghadap ke bawah.
 Aplikasi barisannya :
 Anggota berbaris lurus secara berderet menghadap ke instruktur barisan"
-                    android:textSize="14sp"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:id="@+id/berderetTextView"/>
-            </LinearLayout>
+                        android:textSize="14sp"
+                        android:paddingStart="8dp"
+                        android:textColor="#000000"
+                        android:id="@+id/berderetTextView"/>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/ic_angkare"
-                    android:contentDescription="Angkare"
-                    android:id="@+id/angkareImageView"/>
-
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ANGKARE Kedua lengan tangan dikepalkan dan diacungkan ke atas.Aplikasi barisannya :Anggota berbaris membentuk huruf U (bentuk U siku 90 derajat) dengan Instruktur/ketua tepat berada di tengah barisan. Barisan yang berada di samping kanan dan kiri instruktur barisan, saling berhadapan satu dengan yang lainnya. Dan barisan yang berada di depan instruktur barisan, saling berhadapan dengan instruktur barisan."
-                    android:textSize="14sp"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:id="@+id/angkareTextView"/>
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_angkare"
+                        android:contentDescription="Angkare"
+                        android:id="@+id/angkareImageView"/>
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/image_1"
-                    android:contentDescription="Lingkaran Besar"
-                    android:id="@+id/lingkaranBesarImageView"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ANGKARE
+Kedua lengan tangan dikepalkan dan diacungkan ke atas.Aplikasi barisannya :Anggota berbaris membentuk huruf U (bentuk U siku 90 derajat) dengan Instruktur/ketua tepat berada di tengah barisan. Barisan yang berada di samping kanan dan kiri instruktur barisan, saling berhadapan satu dengan yang lainnya. Dan barisan yang berada di depan instruktur barisan, saling berhadapan dengan instruktur barisan."
+                        android:textSize="14sp"
+                        android:paddingStart="8dp"
+                        android:textColor="#000000"
+                        android:id="@+id/angkareTextView"/>
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="LINGKARAN BESAR
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/image_1"
+                        android:contentDescription="Lingkaran Besar"
+                        android:id="@+id/lingkaranBesarImageView"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="LINGKARAN BESAR
 Kedua ujung jari tangan di lekatkan tepat diatas kepala / membuat lingkaran dengan kedua tangan disekeliling badan.
 Aplikasi Barisannya:
 Anggota membentuk lingkaran besar (ada jarak antar anggota satu dengan yang lain). Semua anggota menghadap ke pusat titik tengah lingkaran. Instruktur Barisan berada tepat di tengah lingkaran"
-                    android:textSize="14sp"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:id="@+id/lingkaranBesarTextView"/>
-            </LinearLayout>
+                        android:textSize="14sp"
+                        android:paddingStart="8dp"
+                        android:textColor="#000000"
+                        android:id="@+id/lingkaranBesarTextView"/>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/image_2"
-                    android:contentDescription="Lingkaran Kecil"
-                    android:id="@+id/lingkaranKecilImageView"/>
-
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="LINGKARAN KECIL
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/image_2"
+                        android:contentDescription="Lingkaran Kecil"
+                        android:id="@+id/lingkaranKecilImageView"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="LINGKARAN KECIL
 Kedua ujung telunjuk dan ibu jari tangan di lekatkan tepat diatas kepala / membuat lingkaran dengan kedua tangan di-sekeliling badan.
 Aplikasi Barisannya:
 Anggota membentuk lingkaran kecil (bahu anggota satu dengan yang lain menempel). Semua anggota menghadap ke pusat titik tengah lingkaran. Instruktur Barisan berada tepat di tengah lingkaran."
-                    android:textSize="14sp"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:id="@+id/lingkaranKecilTextView"/>
-            </LinearLayout>
+                        android:textSize="14sp"
+                        android:paddingStart="8dp"
+                        android:textColor="#000000"
+                        android:id="@+id/lingkaranKecilTextView"/>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/image_3"
-                    android:contentDescription="Kolone Terbuka"
-                    android:id="@+id/koloneTerbukaImageView"/>
-
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="KOLONE TERBUKA
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/image_3"
+                        android:contentDescription="Kolone Terbuka"
+                        android:id="@+id/koloneTerbukaImageView"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="KOLONE TERBUKA
 Kedua belah tangan diangkat setinggi bahu, jari2 merapat menghadap ke dalam Aplikasinya:
 Membentuk barisan yang saling bertolak belakang antara satu regu dengan regu lainnya."
-                    android:textSize="14sp"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:id="@+id/koloneTerbukaTextView"/>
-            </LinearLayout>
+                        android:textSize="14sp"
+                        android:paddingStart="8dp"
+                        android:textColor="#000000"
+                        android:id="@+id/koloneTerbukaTextView"/>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/image_4"
-                    android:contentDescription="Kolone Tertutup"
-                    android:id="@+id/koloneTertutupImageView"/>
-
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="KOLONE TERTUTUP
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/image_4"
+                        android:contentDescription="Kolone Tertutup"
+                        android:id="@+id/koloneTertutupImageView"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="KOLONE TERTUTUP
 Kedua belah tangan dikepalkan dan di angkat di depan badan setinggi bahu. kepalan antar dua tangan rapat
 Aplikasinya:
 Regu membentuk barisan yang saling berhadapan antara regu satu dengan regu lainnya."
-                    android:textSize="14sp"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:id="@+id/koloneTertutupTextView"/>
-            </LinearLayout>
+                        android:textSize="14sp"
+                        android:paddingStart="8dp"
+                        android:textColor="#000000"
+                        android:id="@+id/koloneTertutupTextView"/>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/image_5"
-                    android:contentDescription="Roda"
-                    android:id="@+id/rodaImageView"/>
-
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="RODA Kedua belah tangan dikepalkan dan bersilang di depan dada.Aplikasi Barisannya :
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/image_5"
+                        android:contentDescription="Roda"
+                        android:id="@+id/rodaImageView"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="RODA Kedua belah tangan dikepalkan dan bersilang di depan dada.Aplikasi Barisannya :
 4 Regu menghadap satu titik dari empat arah"
-                    android:textSize="14sp"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:id="@+id/rodaTextView"/>
-            </LinearLayout>
+                        android:textSize="14sp"
+                        android:paddingStart="8dp"
+                        android:textColor="#000000"
+                        android:id="@+id/rodaTextView"/>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/image_6"
-                    android:contentDescription="Anak Panah"
-                    android:id="@+id/anakPanahImageView"/>
-
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ANAK PANAH
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/image_6"
+                        android:contentDescription="Anak Panah"
+                        android:id="@+id/anakPanahImageView"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ANAK PANAH
 Kedua belah tangan diangkat di depan dada dan jari-jari dirapatkan. kedua telapak tangan ditempelkan, dengan posisi semua jari tangan menghadap ke atas.
 Aplikasinya:
 Anggota membentuk beberapa barisan lurus yang terpusat pada satu titik"
-                    android:textSize="14sp"
-                    android:paddingStart="8dp"
-                    android:textColor="#000000"
-                    android:id="@+id/anakPanahTextView"/>
+                        android:textSize="14sp"
+                        android:paddingStart="8dp"
+                        android:textColor="#000000"
+                        android:id="@+id/anakPanahTextView"/>
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>
