@@ -31,7 +31,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -66,7 +65,6 @@ public class ProfileFragment extends Fragment {
     Button logoutBtn;
 
     private FirebaseAuth auth;
-    private DatabaseReference databaseReference;
     private static final int CAPTURE_IMAGE_CODE = 100;
     private static final int CHOOSE_IMAGE = 102;
     private static final int CAMERA_PERMISSION_CODE = 101;
@@ -84,18 +82,19 @@ public class ProfileFragment extends Fragment {
         updateBtn = view.findViewById(R.id.updateBtn);
         logoutBtn = view.findViewById(R.id.logoutBtn);
 
-        auth = FirebaseAuth.getInstance();
-        fetchUserdata();
-        updateBtn.setOnClickListener((v ->{
-            updateBtnClick();
-        }));
-        profilePicture.setOnClickListener(v -> showImageOptions());
-        logoutBtn.setOnClickListener(v -> logoutUser());
+        setButtonListeners();
+
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
 
         return view;
+    }
+
+    private void setButtonListeners(){
+        profilePicture.setOnClickListener(v->showImageOptions());
+        updateBtn.setOnClickListener(v->updateBtnClick());
+        logoutBtn.setOnClickListener(v->logoutUser());
     }
 
     private void showImageOptions(){
@@ -153,66 +152,76 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void updateBtnClick(){
+    private void loadUserData(){
+        FirebaseUser user = auth.getCurrentUser();
+        if(user!=null){
+            String userId = user.getUid();
+            String email = user.getEmail();
+            DocumentReference documentReference = firestore.collection("users").document(userId);
+            documentReference.get().addOnCompleteListener(task -> {
+                if(task.getResult()!=null && task.getResult().exists()){
+                    String username = task.getResult().getString("username");
+                    String profileImageBase64 = task.getResult().getString("profileImage");
+                    txtUsername.setText(username);
+                    txtEmail.setText(email);
+                    if (profileImageBase64!=null){
+                        byte[]decodeString = Base64.decode(profileImageBase64,Base64.DEFAULT);
+                        Bitmap decodeByte = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
+                        profilePicture.setImageBitmap(decodeByte);
+                    }
+                }else {
+                    Toast.makeText(getContext(), "Error loading user data: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e("ProfileFragment", "Error loading user data", task.getException());
+                }
+            });
+        }else {
+            Toast.makeText(getContext(), "No user logged in", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void updateBtnClick() {
         String username = txtUsername.getText().toString();
         String email = txtEmail.getText().toString();
 
         FirebaseUser user = auth.getCurrentUser();
-        if(user!= null){
+        if (user != null) {
             String userId = user.getUid();
             Map<String, Object> userData = new HashMap<>();
             userData.put("username", username);
             userData.put("email", email);
 
-            if(imageUri!=null){
+            if (imageUri != null) {
                 try {
-                    byte[]imageData = getImageData(imageUri);
+                    byte[] imageData = getImageData(imageUri);
                     String base64Image = Base64.encodeToString(imageData, Base64.DEFAULT);
                     userData.put("profileImage", base64Image);
-                }catch (IOException e){
-                    Toast.makeText(getContext(), "Error processing" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    Toast.makeText(getContext(), "Error processing image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
+
+            // Fetch existing data, merge, and update
             firestore.collection("users").document(userId)
-                    .set(userData, SetOptions.merge())
-                    .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Profile saved", Toast.LENGTH_SHORT).show())
-                    .addOnFailureListener(e -> Toast.makeText(getContext(), "Error saving profile: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-        }else {
-            Toast.makeText(getContext(), "No authenticated user", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    void fetchUserdata(){
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if(currentUser != null){
-            String userId = currentUser.getUid();
-
-            DocumentReference documentReference = firestore.collection("users").document(userId);
-            documentReference.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()){
-                    if(task.getResult()!=null && task.getResult().exists()){
-                        String username = task.getResult().getString("username");
-                        String email = task.getResult().getString("email");
-                        String profileImageBase64 = task.getResult().getString("profileImage");
-                        txtUsername.setText(username);
-                        txtEmail.setText(email);
-                        if(profileImageBase64!=null){
-                            byte[]decodeString = Base64.decode(profileImageBase64, Base64.DEFAULT);
-                            Bitmap decodeByte = BitmapFactory.decodeByteArray(decodeString,0,decodeString.length);
-                            profilePicture.setImageBitmap(decodeByte);
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        Map<String, Object> existingData = documentSnapshot.getData();
+                        if (existingData != null) {
+                            userData.putAll(existingData); // Merge existing data with new data
                         }
-                    }else {
-                        Toast.makeText(getContext(),"User doesn't exist", Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Toast.makeText(getContext(), "Error handling user data: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("ProfileFragment", "Error loading user data", task.getException());
-                }
-            });
-        }else {
+                        // Save merged data to Firestore
+                        firestore.collection("users").document(userId)
+                                .set(userData, SetOptions.merge())
+                                .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Profile saved", Toast.LENGTH_SHORT).show())
+                                .addOnFailureListener(e -> Toast.makeText(getContext(), "Error saving profile: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(getContext(), "Error fetching existing data: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+        } else {
             Toast.makeText(getContext(), "No authenticated user", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
     private byte[]getImageData(Uri imageUri)throws IOException{
         InputStream inputStream = getActivity().getContentResolver().openInputStream(imageUri);
@@ -244,7 +253,17 @@ public class ProfileFragment extends Fragment {
         requireActivity().finish();
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == CAMERA_PERMISSION_CODE){
+            if(grantResults.length >0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                openCamera();
+            }else {
+                Toast.makeText(getContext(), "Camera permission required to take pictures", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
 
 
