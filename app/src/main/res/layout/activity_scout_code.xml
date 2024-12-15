@@ -57,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Tri Satya"
+            android:id="@+id/triSatyaTitle"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -66,6 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:id="@+id/triSatyaContent"
             android:text="Demi kehormatanku aku berjanji akan bersungguh-sungguh:\n1. Menjalankan kewajibanku terhadap Tuhan dan Negara Kesatuan Republik Indonesia dan mengamalkan Pancasila\n2. Menolong sesama hidup dan ikut serta membangun masyarakat\n3. Menepati Dasa Darma"
             android:textColor="#000000"
             android:textSize="14sp" />
@@ -75,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Dasa Darma"
+            android:id="@+id/dasaDarmaTitle"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -83,6 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:id="@+id/dasaDarmaContent"
             android:text="1. Takwa kepada Tuhan Yang Maha Esa\n2. Cinta alam dan kasih sayang sesama manusia\n3. Patriot yang sopan dan ksatria\n4. Patuh dan suka bermusyawarah\n5. Rela menolong dan tabah\n6. Rajin, terampil, dan gembira\n7. Hemat, cermat, dan bersahaja\n8. Disiplin, berani, dan setia\n9. Bertanggung jawab dan dapat dipercaya\n10. Suci dalam pikiran, perkataan, dan perbuatan"
             android:textColor="#000000"
             android:textSize="14sp" />
@@ -93,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Dwi Darma"
+            android:id="@+id/dwiDarmaTitle"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -100,6 +105,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="93dp"
+            android:id="@+id/dwiDarmaContent"
             android:text="1. Kami Pramuka Indonesia, bertakwa kepada Tuhan Yang Maha Esa, cinta alam, dan kasih sayang sesama manusia\n2. Kami Pramuka Indonesia, patriot yang sopan dan kesatria"
             android:textColor="#000000"
             android:textSize="13sp" />
