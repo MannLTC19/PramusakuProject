@@ -53,4 +53,16 @@
         android:contentDescription="Compass"
         android:layout_gravity="center"/>
 
+    <!-- TextView for degrees -->
+    <TextView
+        android:id="@+id/degreesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="0°"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="320dp"/>
 </FrameLayout>
+
