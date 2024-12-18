@@ -31,10 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new ToolsFragment());
             } else if (id == R.id.aboutUs) {
                 replaceFragment(new AboutUsFragment());
-            } else if (id == R.id.certificates) {
-                replaceFragment(new CertificatesFragment());
-            } else if (id == R.id.profile) {
-                replaceFragment(new ProfileFragment());
             } else {
                 return false; // Unhandled case, return false
             }

@@ -16,14 +16,5 @@
         android:title="About Us"
         android:icon="@drawable/baseline_library_books_24"/>
 
-    <item
-        android:id="@+id/certificates"
-        android:title="Certificates"
-        android:icon="@drawable/baseline_workspace_premium_24"/>
-
-    <item
-        android:id="@+id/profile"
-        android:title="Profile"
-        android:icon="@drawable/baseline_account_circle_24"/>
 
 </menu>

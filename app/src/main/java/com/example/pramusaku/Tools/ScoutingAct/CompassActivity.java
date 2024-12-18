@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ImageButton;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +28,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private ImageView compassImageView;
     private float azimuth = 0f; // Angle of rotation
     private float currentAzimuth = 0f;
+    private TextView directionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         setContentView(R.layout.activity_compass);
 
         compassImageView = findViewById(R.id.compassImageView);
+        directionTextView = findViewById(R.id.directionTextView); // Find the TextView
+
         ImageButton btnBack = findViewById(R.id.btnBack);
         ImageButton btnMain = findViewById(R.id.btnMain);
 
@@ -63,23 +67,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        if (accelerometer != null) {
-            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
-        }
-        if (magnetometer != null) {
-            sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        sensorManager.unregisterListener(this);
-    }
-
-    @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             gravity = event.values.clone();
@@ -98,6 +85,9 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
                 // Rotate the compass image
                 animateCompass();
+
+                // Update direction text
+                updateDirectionText();
             }
         }
     }
@@ -105,6 +95,32 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private void animateCompass() {
         currentAzimuth = azimuth;
         compassImageView.setRotation(-currentAzimuth);
+    }
+
+    private void updateDirectionText() {
+        String direction = getDirectionFromAzimuth(azimuth);
+        directionTextView.setText(direction);
+    }
+
+    private String getDirectionFromAzimuth(float azimuth) {
+        if (azimuth >= 337.5 || azimuth < 22.5) {
+            return "North";
+        } else if (azimuth >= 22.5 && azimuth < 67.5) {
+            return "North-East";
+        } else if (azimuth >= 67.5 && azimuth < 112.5) {
+            return "East";
+        } else if (azimuth >= 112.5 && azimuth < 157.5) {
+            return "South-East";
+        } else if (azimuth >= 157.5 && azimuth < 202.5) {
+            return "South";
+        } else if (azimuth >= 202.5 && azimuth < 247.5) {
+            return "South-West";
+        } else if (azimuth >= 247.5 && azimuth < 292.5) {
+            return "West";
+        } else if (azimuth >= 292.5 && azimuth < 337.5) {
+            return "North-West";
+        }
+        return "Unknown";
     }
 
     @Override
