@@ -99,30 +99,21 @@ public class MorseActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-        // Access shared preferences
         sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-
-        // Restore last translated Morse code from SharedPreferences
         String lastTranslation = sharedPreferences.getString(LAST_TRANSLATION_KEY, "");
         if (!lastTranslation.isEmpty()) {
             tvMorseCode.setText(lastTranslation);
         }
 
-        // Set button click listener
+
         btnTranslate.setOnClickListener(v -> {
             String normalText = etNormalText.getText().toString().toUpperCase();
             if (TextUtils.isEmpty(normalText)) {
                 tvMorseCode.setText("Please enter text to translate.");
                 return;
             }
-
-            // Translate to Morse code
             String morseCode = translateToMorse(normalText);
             tvMorseCode.setText(morseCode);
-
-            // Save the translation to SharedPreferences
             saveTranslationToSharedPreferences(morseCode);
         });
     }
