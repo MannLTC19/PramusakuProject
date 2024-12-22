@@ -23,10 +23,10 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private Sensor accelerometer;
     private Sensor magnetometer;
 
-    private float[] gravity; // Accelerometer data
-    private float[] geomagnetic; // Magnetometer data
+    private float[] gravity;
+    private float[] geomagnetic;
     private ImageView compassImageView;
-    private float azimuth = 0f; // Angle of rotation
+    private float azimuth = 0f;
     private float currentAzimuth = 0f;
     private TextView directionTextView;
 
@@ -36,33 +36,41 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         setContentView(R.layout.activity_compass);
 
         compassImageView = findViewById(R.id.compassImageView);
-        directionTextView = findViewById(R.id.directionTextView); // Find the TextView
+        directionTextView = findViewById(R.id.directionTextView);
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         ImageButton btnMain = findViewById(R.id.btnMain);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        btnBack.setOnClickListener(v -> finish());
+
+        btnMain.setOnClickListener(v -> {
+            Intent intent = new Intent(CompassActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         });
 
-        btnMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CompassActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish(); // Optional: Ends the current activity
-            }
-        });
-
-        // Initialize sensors
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (sensorManager != null) {
+            sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
+            sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (sensorManager != null) {
+            sensorManager.unregisterListener(this);
         }
     }
 
@@ -83,10 +91,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
                 azimuth = (float) Math.toDegrees(orientation[0]);
                 azimuth = (azimuth + 360) % 360;
 
-                // Rotate the compass image
                 animateCompass();
-
-                // Update direction text
                 updateDirectionText();
             }
         }
@@ -94,7 +99,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
     private void animateCompass() {
         currentAzimuth = azimuth;
-        compassImageView.setRotation(-currentAzimuth);
+        compassImageView.setRotation(currentAzimuth);
     }
 
     private void updateDirectionText() {
@@ -125,6 +130,5 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // Not used
     }
 }
