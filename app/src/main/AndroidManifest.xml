@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -43,9 +45,6 @@
             android:exported="false" />
         <activity
             android:name=".Tools.Crytography.MorseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Tools.ScoutingAct.KnotsActivity"
             android:exported="false" />
         <activity
             android:name=".Tools.ScoutCodeActivity"
