@@ -9,7 +9,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ImageButton;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +28,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     private float azimuth = 0f;
     private float currentAzimuth = 0f;
     private TextView directionTextView;
+    private TextView azimuthTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
         compassImageView = findViewById(R.id.compassImageView);
         directionTextView = findViewById(R.id.directionTextView);
+        azimuthTextView = findViewById(R.id.degreesTextView);
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         ImageButton btnMain = findViewById(R.id.btnMain);
@@ -54,6 +55,10 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
         if (sensorManager != null) {
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
+            if (accelerometer == null || magnetometer == null) {
+                directionTextView.setText("Compass sensors not available.");
+            }
         }
     }
 
@@ -98,13 +103,21 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     }
 
     private void animateCompass() {
+        float rotation = currentAzimuth - azimuth;
+        if (rotation > 180) rotation -= 360;
+        if (rotation < -180) rotation += 360;
+
+        compassImageView.animate()
+                .rotationBy(-rotation)
+                .setDuration(500)
+                .start();
         currentAzimuth = azimuth;
-        compassImageView.setRotation(currentAzimuth);
     }
 
     private void updateDirectionText() {
         String direction = getDirectionFromAzimuth(azimuth);
         directionTextView.setText(direction);
+        azimuthTextView.setText(String.format("%.0f°", azimuth));
     }
 
     private String getDirectionFromAzimuth(float azimuth) {

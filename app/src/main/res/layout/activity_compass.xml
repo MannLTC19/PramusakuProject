@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
@@ -19,29 +18,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginEnd="339dp"
             android:background="@null"
             android:contentDescription="Back"
             android:padding="16dp"
             android:src="@drawable/back_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btnMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="339dp"
-            android:layout_marginTop="9dp"
             android:layout_marginEnd="16dp"
             android:background="@null"
             android:contentDescription="Home"
             android:padding="16dp"
             android:src="@drawable/home_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -50,10 +41,9 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:src="@drawable/compass"
-        android:contentDescription="Compass"
-        android:layout_gravity="center"/>
+        android:contentDescription="Compass Image"
+        android:layout_gravity="center" />
 
-    <!-- TextView for degrees -->
     <TextView
         android:id="@+id/degreesTextView"
         android:layout_width="wrap_content"
@@ -63,19 +53,17 @@
         android:textSize="24sp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_marginTop="320dp"/>
+        android:layout_marginTop="320dp" />
 
     <TextView
         android:id="@+id/directionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="168dp"
+        android:layout_gravity="center"
         android:text="North"
         android:textColor="#000000"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="380dp" />
 
 </FrameLayout>
-
