@@ -1,5 +1,6 @@
 package com.example.pramusaku.Tools.ScoutingAct;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -103,15 +104,12 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     }
 
     private void animateCompass() {
-        float rotation = currentAzimuth - azimuth;
-        if (rotation > 180) rotation -= 360;
-        if (rotation < -180) rotation += 360;
+        // Menggunakan ObjectAnimator untuk animasi yang lebih smooth
+        ObjectAnimator animator = ObjectAnimator.ofFloat(compassImageView, "rotation", currentAzimuth, azimuth);
+        animator.setDuration(500); // Durasi animasi
+        animator.start();
 
-        compassImageView.animate()
-                .rotationBy(-rotation)
-                .setDuration(500)
-                .start();
-        currentAzimuth = azimuth;
+        currentAzimuth = azimuth; // Update posisi saat ini
     }
 
     private void updateDirectionText() {
@@ -143,5 +141,6 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // Tidak digunakan
     }
 }
