@@ -16,7 +16,7 @@
 
 | Login Screen | Home Screen | Material Screen |
 |--------------|-------------|-----------------|
-| ![login](screenshots/login.png) | ![home](screenshots/home.png) | ![materi](screenshots/materi.png) |
+| ![login](screenshots/login.jpg) | ![home](screenshots/home.jpg) | ![materi](screenshots/tools.jpg) |
 
 > 📌 Place your screenshots inside the `screenshots/` folder of the repository.
 
