@@ -57,10 +57,10 @@ PramusakuProject/
 
 │   │   ├── main/
 
-│   │   │   ├── java/   
-                              # Kotlin source files (e.g., MainActivity, etc.)
-│   │   │   ├── res/   
-                              # Layouts, drawables, menus, etc.
+│   │   │   ├── java/          # Kotlin source files (e.g., MainActivity, etc.)
+                              
+│   │   │   ├── res/           # Layouts, drawables, menus, etc.
+                             
 │   │   │   └── AndroidManifest.xml
 
 ├── build.gradle.kts
