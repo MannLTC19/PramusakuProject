@@ -50,24 +50,19 @@ To run this project locally:
 
 
 ## 📁 Project Structure
+
+```text
 PramusakuProject/
 ├── app/
-
 │   ├── src/
-
 │   │   ├── main/
-
-│   │   │   ├── java/                # Kotlin source files (e.g., MainActivity, etc.)
-                              
-│   │   │   ├── res/                 # Layouts, drawables, menus, etc.
-                             
+│   │   │   ├── java/         # Kotlin source files (e.g., MainActivity, etc.)
+│   │   │   ├── res/          # Layouts, drawables, menus, etc.
 │   │   │   └── AndroidManifest.xml
-
 ├── build.gradle.kts
-
 ├── settings.gradle.kts
-
 └── google-services.json
+
 
 ## 👤 Developer
 **Muhammad Ihsan Ramadhan**
