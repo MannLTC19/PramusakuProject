@@ -63,8 +63,3 @@ PramusakuProject/
 ├── settings.gradle.kts
 └── google-services.json
 
-
-## 👤 Developer
-**Muhammad Ihsan Ramadhan**
-
-**Berliano Keio**
